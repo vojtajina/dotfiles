@@ -1,0 +1,72 @@
+# Load all completions.
+for file in $HOME/.completion/*; do
+  source $file
+done
+
+
+# ALIASES
+alias q='exit'
+alias md='mkdir -p'
+alias rd='rmdir'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias o='open'
+alias cl='clear'
+
+alias kinit='klist -s || kinit'
+alias ls='command ls -G'
+
+alias paste='pbpaste'
+alias copy='pbcopy'
+
+alias ssh-desk='kinit && ssh -t vojta.mtv.corp.google.com -oCompression=yes -oCheckHostIP=no -oStrictHostKeyChecking=no -oNumberOfPasswordPrompts=0 -oPasswordAuthentication=no -oServerAliveInterval=10'
+alias vnc-ci='open vnc://snugglenuts.macminicolo.net'
+
+
+# Git
+alias g="git"
+alias gre="git rebase"
+alias gci="git commit"
+alias gco="git checkout"
+alias gbr="git branch"
+alias ga="git add"
+alias gl="git log"
+
+complete -o default -o nospace -F _git g
+__git_complete gre _git_rebase
+__git_complete gci _git_commit
+__git_complete gco _git_checkout
+__git_complete gbr _git_branch
+__git_complete ga _git_add
+__git_complete gl _git_log
+
+
+# Git prompt
+GIT_PS1_SHOWDIRTYSTATE="true"
+unset GIT_PS1_SHOWUNTRACKEDFILES
+unset GIT_PS1_SHOWCOLORHINTS
+PROMPT_COMMAND='__git_ps1 "\w" " \\\$ " " \e[33m[%s]\e[0m"'
+
+
+# NVM
+source $HOME/.nvm/nvm.sh
+source $NVM_DIR/bash_completion
+
+
+# GO
+export GOPATH=/usr/local/go
+
+
+# Set the terminal's title bar.
+function titlebar() {
+  echo -n $'\e]0;'"$*"$'\a'
+}
+
+
+# Load OS specific files
+OS=$(uname -s)
+[[ $OS = "Darwin" ]] && [[ -r ~/.osx_bashrc ]] && source ~/.osx_bashrc
+[[ $OS = "Linux" ]] && [[ -r ~/.linux_bashrc ]] && source ~/.linux_bashrc
+
+# Load local modifications
+[[ -r ~/.local_bashrc ]] && source ~/.local_bashrc

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Fetch a PR from GitHub into a local branch.
+# @author Vojta Jina <vojta.jina@gmail.com>
+
+PR=$1
+BRANCH=$2
+
+if [ -z $PR ]; then
+  echo "Missing pull request number"
+  return 1
+fi
+
+if [ -z $BRANCH ]; then
+  BRANCH="pr-$PR"
+fi
+
+git fetch upstream pull/$PR/head:$BRANCH
+git checkout $BRANCH

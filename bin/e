@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Start Sublime Text
+# @author Vojta Jina <vojta.jina@gmail.com>
+
+SUBLIME_CMD=sublime
+
+if [ -z $@ ]; then
+  # no arguments, try to find project
+  # TODO(vojta): traverse up to find projects in parent directories
+  PROJECT=`ls *.sublime-project 2>/dev/null`
+
+  if [ -e "$PROJECT" ]; then
+    # project exists in current folder, open it
+    $SUBLIME_CMD . --project "$PROJECT"
+  else
+    # no project, open current folder
+    $SUBLIME_CMD .
+  fi
+else
+  # passing arguments, just forward them to sublime
+  $SUBLIME_CMD "$@"
+fi

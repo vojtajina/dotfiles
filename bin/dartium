@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ -z "$DARTIUM_PATH" ]; then
+  DARTIUM_PATH="$HOME/Downloads/dartium/Chromium.app/Contents/MacOS/Chromium"
+fi
+
+DART_FLAGS='--enable-type-checks --enable-asserts' $DARTIUM_PATH --user-data-dir=/var/tmp/dartium-profile --no-default-browser-check "$@"

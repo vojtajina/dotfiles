@@ -1,0 +1,21 @@
+# Numerous always-ignore extensions
+*.orig
+*~
+
+# OS or Editor folders
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+.idea
+
+# Folders to ignore
+.hg
+.svn
+
+# Node.js package manager
+/node_modules
+/npm-debug.log
+
+# Other stuff
+*.pyc
+/tmp

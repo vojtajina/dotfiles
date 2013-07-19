@@ -1,0 +1,14 @@
+echo 'OSX PROFILE'
+# Show / hide system files in Finder
+alias hide='defaults write com.apple.Finder AppleShowAllFiles -bool false && killall Finder'
+alias show='defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder'
+alias mvims='mvim --remote +vsplit'
+
+# Start ScreenSaver. This will lock the screen if locking is enabled.
+alias ss="open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
+
+# Empty the Trash on all mounted volumes and the main HDD
+# Also, clear Apple’s System Logs to improve shell startup speed
+alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
+
+export EDITOR="sublime"

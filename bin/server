@@ -1,0 +1,27 @@
+#!/usr/bin/env node
+
+var connect = require('connect');
+var open = require('open');
+var http = require('http');
+
+var PORT = process.argv[2] || 8000;
+var SERVED_DIR = process.cwd();
+
+var app = connect()
+  .use(connect.favicon())
+  .use(connect.logger('dev'))
+  .use(connect.static(SERVED_DIR))
+  .use(connect.directory(SERVED_DIR));
+var server = http.createServer(app);
+var onListening = function() {
+  console.log('Server listening on ' + PORT);
+  open('http://localhost:' + PORT);
+};
+
+server.on('error', function(err) {
+  if (err.code === 'EADDRINUSE') {
+    return server.listen(++PORT);
+  }
+
+  throw err;
+}).listen(PORT, onListening);
