@@ -1,4 +1,3 @@
-echo 'OSX PROFILE'
 # Show / hide system files in Finder
 alias hide='defaults write com.apple.Finder AppleShowAllFiles -bool false && killall Finder'
 alias show='defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder'
