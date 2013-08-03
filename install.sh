@@ -27,6 +27,10 @@ done
 
 link "$dotfiles/completion/" "$HOME/.completion"
 
+# link vim
+link "$dotfiles/vim/vimrc" "$HOME/.vimrc"
+link "$dotfiles/vim/gvimrc" "$HOME/.gvimrc"
+
 
 # Install OS specific stuff
 OS=$(uname -s)
