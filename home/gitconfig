@@ -1,43 +1,44 @@
 [user]
-	name = Vojta Jina
-	email = vojta.jina@gmail.com
+  name = Vojta Jina
+  email = vojta.jina@gmail.com
 
 [color]
-	diff = auto
+  diff = auto
   status = auto
   branch = auto
   interactive = auto
   pager = true
 
 [core]
-	excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore
+  editor = vim
 
 [merge]
-	keepBackup = false
-	tool = p4merge
+  keepBackup = false
+  tool = p4merge
 
 [mergetool "p4merge"]
-	cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
-	keepTemporaries = false
-	trustExitCode = false
-	keepBackup = false
+  cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+  keepTemporaries = false
+  trustExitCode = false
+  keepBackup = false
 
 #[diff]
-#	 external = p4diff
+#  external = p4diff
 
 [format]
   pretty = %C(bold blue)%h%C(reset)%C(bold yellow)%d%C(reset) %C(white)%s%C(reset) %C(green)%an (%ar)%C(reset)
 
 [alias]
-	co = checkout
-	ci = commit
-	br = branch
-	st = status
-	re = rebase
+  co = checkout
+  ci = commit
+  br = branch
+  st = status
+  re = rebase
   l = log --graph
 
 [push]
-	default = simple
+  default = simple
 
 [pull]
 #  ff-only = true
