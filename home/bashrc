@@ -19,9 +19,6 @@ alias ls='command ls -G'
 alias paste='pbpaste'
 alias copy='pbcopy'
 
-alias ssh-desk='kinit && ssh -t vojta.mtv.corp.google.com -oCompression=yes -oCheckHostIP=no -oStrictHostKeyChecking=no -oNumberOfPasswordPrompts=0 -oPasswordAuthentication=no -oServerAliveInterval=10'
-alias vnc-ci='open vnc://snugglenuts.macminicolo.net'
-
 
 # Git
 alias g="git"
