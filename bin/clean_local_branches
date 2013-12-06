@@ -1,0 +1,17 @@
+#!/bin/bash
+
+for BRANCH_NAME in $(git for-each-ref --format='%(refname)' refs/heads/ | sed s#^refs/heads/## ); do
+  if [ "$BRANCH_NAME" == "master" ] || [ "BRANCH_NAME" == "v1.0.x" ]; then
+    continue
+  fi
+
+  git branch -d $BRANCH_NAME 2> /dev/null
+
+  if [ $? -ne 0 ]; then
+    read -p "Do you wanna force delete $BRANCH_NAME?" ANSWER
+
+    if [ "$ANSWER" == "y" ]; then
+      git branch -D $BRANCH_NAME
+    fi
+  fi
+done
