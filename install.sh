@@ -34,6 +34,10 @@ link "$dotfiles/vim/vimrc" "$HOME/.vimrc"
 link "$dotfiles/vim/gvimrc" "$HOME/.gvimrc"
 link "$dotfiles/vim/" "$HOME/.vim"
 
+# Install NPM dependencies
+cd $dotfiles/bin
+npm install
+
 # Install OS specific stuff
 OS=$(uname -s)
 [[ $OS = "Darwin" ]] && $dotfiles/install/osx.sh
