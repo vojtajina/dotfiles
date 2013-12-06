@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# Merge PR branch
+# @author Vojta Jina <vojta.jina@gmail.com>
+
+
+PR_BRANCH=$(git branch | grep "^*" | sed "s/^\* //")
+
+git rebase master
+git checkout master
+git merge --ff-only $PR_BRANCH
+git branch -d $PR_BRANCH
+
+echo "Do you want to push to origin master? Y/n"
+read ANSWER
+
+if [ -z $ANSWER ] || [ "$ANSWER" = "y" ] || [ "$ANSWER" = "Y" ]; then
+  git push origin master
+fi
+
+echo "Do you want to push to upstream master? Y/n"
+read ANSWER
+
+if [ -z $ANSWER ] || [ "$ANSWER" = "y" ] || [ "$ANSWER" = "Y" ]; then
+  git push upstream master
+fi
+
+echo "Do you want to cherry-pick to v1.0.x? y/N"
+read ANSWER
+
+if [ "$ANSWER" = "y" ] || [ "$ANSWER" = "Y" ]; then
+  git checkout v1.0.x
+  git pull upstream v1.0.x
+  git cherry-pick master
+
+  echo "Do you want to push to origin v1.0.x? Y/n"
+  read ANSWER
+
+  if [ -z $ANSWER ] || [ "$ANSWER" = "y" ] || [ "$ANSWER" = "Y" ]; then
+    git push origin v1.0.x
+  fi
+
+  echo "Do you want to push to upstream v1.0.x? y/N"
+  read ANSWER
+
+  if [ "$ANSWER" = "y" ] || [ "$ANSWER" = "Y" ]; then
+    git push upstream v1.0.x
+  fi
+fi
