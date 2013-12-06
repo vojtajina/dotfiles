@@ -1,3 +1,4 @@
 alias ls="ls --color=auto"
+alias e="vim"
 
 export EDITOR="vim"
