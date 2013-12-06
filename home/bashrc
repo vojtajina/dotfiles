@@ -62,6 +62,11 @@ function titlebar() {
   echo -n $'\e]0;'"$*"$'\a'
 }
 
+# grep processes
+function ps() {
+  /bin/ps aux | grep -E "^USER|$1" | grep -v "grep -E ^USER|$1"
+}
+
 
 # Load OS specific files
 OS=$(uname -s)
