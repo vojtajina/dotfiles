@@ -38,7 +38,7 @@
   l = log --graph
 
 [push]
-  default = simple
+  default = current
 
 [pull]
 #  ff-only = true
