@@ -46,8 +46,10 @@ PROMPT_COMMAND='__git_ps1 "\w" " \\\$ " " \e[33m[%s]\e[0m"'
 
 
 # NVM
-source $HOME/.nvm/nvm.sh
-source $NVM_DIR/bash_completion
+if [ -a "$HOME/.nvm/nvm.sh" ]; then
+  source $HOME/.nvm/nvm.sh
+  source $NVM_DIR/bash_completion
+fi
 
 
 # GO
