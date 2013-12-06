@@ -11,17 +11,18 @@ link() {
   ln -s "$from" "$to"
 }
 
-for location in home/*; do
+
+for location in $dotfiles/home/*; do
   file="${location##*/}"
   file="${file%.*}"
-  link "$dotfiles/$location" "$HOME/.$file"
+  link "$location" "$HOME/.$file"
 done
 
-for location in bin/*; do
+for location in $dotfiles/bin/*; do
   file="${location##*/}"
   file="${file%.*}"
-  if [ -x "$dotfiles/$location" ]; then
-    link "$dotfiles/$location" "$bin/$file"
+  if [ -x "$location" ]; then
+    link "$location" "$bin/$file"
   fi
 done
 
