@@ -1,9 +1,10 @@
 ###-begin-karma-completion-###
+#
 # karma command completion script
 # This is stolen from NPM. Thanks @isaac!
 #
 # Installation: karma completion >> ~/.bashrc  (or ~/.zshrc)
-# Or, maybe: karma completion > /usr/local/etc/bash_completion.d/npm
+# Or, maybe: karma completion > /usr/local/etc/bash_completion.d/karma
 #
 
 if type complete &>/dev/null; then
@@ -13,16 +14,10 @@ if type complete &>/dev/null; then
                            COMP_LINE="$COMP_LINE" \
                            COMP_POINT="$COMP_POINT" \
                            karma completion -- "${COMP_WORDS[@]}" \
-                           2>/var/tmp/karma-completion))
-    if [ $? -eq 0 ]; then
-      echo "ok" >> "bash.log"
-    else
-      echo "default" >> "bash.log"
-    fi
-
+                           2>/dev/null)) || return $?
     IFS="$si"
   }
-  complete -o bashdefault -F __karma_completion karma
+  complete -F __karma_completion karma
 elif type compdef &>/dev/null; then
   __karma_completion() {
     si=$IFS
