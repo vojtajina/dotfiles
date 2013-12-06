@@ -4,7 +4,7 @@
   "description": "Fake module that defines dependencies of all the Node scripts.",
   "main": "index.js",
   "dependencies": {
-    "connect": "~2.8.4",
+    "connect": "~2.11.2",
     "open": "~0.0.4"
   },
   "devDependencies": {},
