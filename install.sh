@@ -21,7 +21,8 @@ done
 for location in $dotfiles/bin/*; do
   file="${location##*/}"
   file="${file%.*}"
-  if [ -x "$location" ]; then
+  # only executable files, ignore directories
+  if [ -x "$location" ] && [ ! -d "$location" ]; then
     link "$location" "$bin/$file"
   fi
 done
