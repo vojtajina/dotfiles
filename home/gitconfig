@@ -36,6 +36,7 @@
   st = status
   re = rebase
   l = log --graph
+  cp = cherry-pick
 
 [push]
   default = current
