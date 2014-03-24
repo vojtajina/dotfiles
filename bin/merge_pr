@@ -6,6 +6,9 @@
 
 PR_BRANCH=$(git branch | grep "^*" | sed "s/^\* //")
 
+git checkout master
+git pull --ff-only upstream master
+git checkout $PR_BRANCH
 git rebase master
 git checkout master
 git merge --ff-only $PR_BRANCH
