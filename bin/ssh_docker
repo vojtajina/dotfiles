@@ -1,0 +1,14 @@
+#!/usr/bin/env python
+import sys
+import subprocess
+import json
+
+cmd = 'docker inspect {}'.format(sys.argv[1])
+output = subprocess.check_output(cmd, shell=True).decode('utf-8')
+data = json.loads(output)
+
+port  = data[0]['NetworkSettings']['Ports']['22/tcp'][0]['HostPort']
+
+cmd = 'ssh travis@localhost -p {} -i ~/.ssh/travis_docker_rsa'.format(port)
+print cmd
+# subprocess.call(cmd, shell=True)
