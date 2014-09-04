@@ -37,6 +37,7 @@
   re = rebase
   l = log --graph
   cp = cherry-pick
+  mt = mergetool
 
 [push]
   default = current
