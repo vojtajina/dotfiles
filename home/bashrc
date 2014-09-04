@@ -14,7 +14,9 @@ alias o='open'
 alias cl='clear'
 
 alias kinit='klist -s || kinit'
-alias ls='command ls -G'
+# G enable colors
+# h show sizes in kilo, mega, etc.
+alias ls='command ls -Gh'
 
 alias paste='pbpaste'
 alias copy='pbcopy'
