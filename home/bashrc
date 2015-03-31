@@ -57,6 +57,8 @@ fi
 # GO
 export GOPATH=/usr/local/go
 
+# Add ~/bin into PATH
+export PATH="$HOME/bin:$PATH"
 
 # Set the terminal's title bar.
 function titlebar() {

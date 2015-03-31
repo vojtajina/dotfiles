@@ -1,7 +1,7 @@
 #!/bin/bash
 
 dotfiles="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-bin="/usr/local/bin"
+bin="$HOME/bin"
 
 link() {
   from="$1"
@@ -18,6 +18,8 @@ for location in $dotfiles/home/*; do
   link "$location" "$HOME/.$file"
 done
 
+# Create $bin folder if not exist
+mkdir -p "$bin"
 for location in $dotfiles/bin/*; do
   file="${location##*/}"
   file="${file%.*}"
