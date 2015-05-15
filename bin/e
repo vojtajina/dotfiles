@@ -7,7 +7,7 @@ SUBLIME_CMD=sublime
 
 # TODO(vojta): if passed a directory, search for project file
 #
-if [ -z $@ ]; then
+if [ -z "$@" ]; then
   # no arguments, try to find project
   # TODO(vojta): traverse up to find projects in parent directories
   PROJECT=`ls *.sublime-project 2>/dev/null`
