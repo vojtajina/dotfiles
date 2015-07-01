@@ -44,7 +44,8 @@ __git_complete gl _git_log
 GIT_PS1_SHOWDIRTYSTATE="true"
 unset GIT_PS1_SHOWUNTRACKEDFILES
 unset GIT_PS1_SHOWCOLORHINTS
-PROMPT_COMMAND='__git_ps1 "\w" " \\\$ " " \e[33m[%s]\e[0m"'
+# https://wiki.archlinux.org/index.php/Color_Bash_Prompt
+PROMPT_COMMAND='__git_ps1 "\w" " \$(if [[ \$? == 0 ]]; then echo \"\[\033[01;32m\]\342\234\223\"; else echo \"\[\033[01;31m\]\342\234\227\"; fi)\[\033[00;00m\] " " \[\033[01;33m\][%s]\[\033[00;00m\]"'
 
 
 # NVM
