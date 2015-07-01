@@ -45,4 +45,7 @@ OS=$(uname -s)
 [[ $OS = "Darwin" ]] && $dotfiles/install/osx.sh
 [[ $OS = "Linux" ]] && $dotfiles/install/linux.sh
 
+# Install .lesskey
+lesskey
+
 unset link

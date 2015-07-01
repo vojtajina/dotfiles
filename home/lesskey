@@ -1,0 +1,8 @@
+n forw-line
+e back-line
+j forw-line
+
+k repeat-search
+K reverse-search
+h repeat-search
+H reverse-search
