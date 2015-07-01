@@ -5,6 +5,7 @@ done
 
 
 # ALIASES
+alias e='sublime'
 alias q='exit'
 alias md='mkdir -p'
 alias rd='rmdir'
@@ -13,7 +14,6 @@ alias ...='cd ../..'
 alias o='open'
 alias cl='clear'
 
-alias kinit='klist -s || kinit'
 # G enable colors
 # h show sizes in kilo, mega, etc.
 alias ls='command ls -Gh'
@@ -67,7 +67,7 @@ function titlebar() {
 }
 
 # grep processes
-function ps() {
+function psg() {
   /bin/ps aux | grep -E "^USER|$1" | grep -v "grep -E ^USER|$1"
 }
 
