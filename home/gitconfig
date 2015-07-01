@@ -38,6 +38,7 @@
   l = log --graph
   cp = cherry-pick
   mt = mergetool
+  s = show --format='%C(bold blue)%h%C(reset) %C(green)%an (%ad)%C(reset)\n%C(bold white)%s%C(reset)\n\n%b'
 
 [push]
   default = current
