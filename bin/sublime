@@ -3,7 +3,7 @@
 # Start Sublime Text
 # @author Vojta Jina <vojta.jina@gmail.com>
 
-SUBLIME_CMD=/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl
+SUBLIME_CMD="/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl"
 
 # TODO(vojta): if passed a directory, search for project file
 if [ -z "$@" ]; then
@@ -13,12 +13,12 @@ if [ -z "$@" ]; then
 
   if [ -e "$PROJECT" ]; then
     # project exists in current folder, open it
-    $SUBLIME_CMD . --project "$PROJECT"
+    "$SUBLIME_CMD" . --project "$PROJECT"
   else
     # no project, open current folder
-    $SUBLIME_CMD .
+    "$SUBLIME_CMD" .
   fi
 else
   # passing arguments, just forward them to sublime
-  $SUBLIME_CMD "$@"
+  "$SUBLIME_CMD" "$@"
 fi
