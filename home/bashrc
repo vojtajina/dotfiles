@@ -68,7 +68,7 @@ function titlebar() {
 
 # grep processes
 function psg() {
-  /bin/ps aux | grep -E "^USER|$1" | grep -v "grep -E ^USER|$1"
+  /bin/ps aux | grep -i -E "^USER|$1" | grep -v "grep -i -E ^USER|$1"
 }
 
 
