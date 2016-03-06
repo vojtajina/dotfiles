@@ -50,16 +50,23 @@ PROMPT_COMMAND='__git_ps1 "\w" " \$(if [[ \$? == 0 ]]; then echo \"\[\033[01;32m
 
 # NVM
 # Sourcing nvm.sh is very slow, so we source it when needed.
-# Unfortunatelly, this means no node is selected prior calling nvm.
+# This means no node is selected prior calling nvm and thus
+# the default version of node is hardcoded here.
+NODE_VERSION="v0.10.38"
 NVM_DIR=$HOME/.nvm
 if [ -a "$NVM_DIR/nvm.sh" ]; then
   source $NVM_DIR/bash_completion
   nvm() { . "$NVM_DIR/nvm.sh" ; nvm $@ ; }
+  export NVM_BIN=$NVM_DIR/$NODE_VERSION/bin
+  export NVM_PATH=$NVM_DIR/$NODE_VERSION/lib/node
+  export MANPATH="$NVM_DIR/$NODE_VERSION/share/man:$MANPATH"
+  export PATH="$NVM_BIN:$PATH"
 fi
 
 
 # GO
 export GOPATH=/usr/local/go
+
 
 # Add ~/bin into PATH
 export PATH="$HOME/bin:$PATH"
