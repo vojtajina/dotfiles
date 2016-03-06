@@ -1,7 +1,6 @@
 #!/bin/bash
 
 dotfiles="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-bin="$HOME/bin"
 
 link() {
   from="$1"
@@ -11,23 +10,34 @@ link() {
   ln -s "$from" "$to"
 }
 
-
 for location in $dotfiles/home/*; do
   file="${location##*/}"
   file="${file%.*}"
   link "$location" "$HOME/.$file"
 done
 
-# Create $bin folder if not exist
-mkdir -p "$bin"
-for location in $dotfiles/bin/*; do
-  file="${location##*/}"
-  file="${file%.*}"
-  # only executable files, ignore directories
-  if [ -x "$location" ] && [ ! -d "$location" ]; then
-    link "$location" "$bin/$file"
-  fi
-done
+
+# Clean existing ~/bin
+# - copy regular files to $dotfiles/bin
+# - ignore symlinks to $dotfiles/bin
+# - copy other symlinks
+if [ -d "$HOME/bin" ]; then
+  for file in $HOME/bin/*; do
+    if [ -h $file ]; then
+      realpath=$(readlink $file)
+      if [[ $realpath = $dotfiles/bin/* ]]; then
+        : # Symlink to existing dotfiles, ignoring...
+      else
+        ln -s $realpath $dotfiles/bin/
+      fi
+    else
+      cp -r $file $dotfiles/bin/
+    fi
+  done
+  rm -rf $HOME/bin
+fi
+
+link "$dotfiles/bin/" "$HOME/bin"
 
 link "$dotfiles/completion/" "$HOME/.completion"
 
