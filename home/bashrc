@@ -85,6 +85,11 @@ function psg() {
   /bin/ps aux | grep -i -E "^USER|$1" | grep -v "grep -i -E ^USER|$1"
 }
 
+# Autoenv, source .env file after cd-ing to a directory
+if [ -a "$/usr/local/opt/autoenv/activate.sh" ]; then
+  source /usr/local/opt/autoenv/activate.sh
+fi
+
 
 # Load OS specific files
 OS=$(uname -s)
