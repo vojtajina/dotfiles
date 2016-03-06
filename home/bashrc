@@ -65,9 +65,10 @@ export GOPATH=/usr/local/go
 export PATH="$HOME/bin:$PATH"
 
 # Set the terminal's title bar.
-function titlebar() {
+function iterm_title() {
   echo -n $'\e]0;'"$*"$'\a'
 }
+alias tt='iterm_title'
 
 # grep processes
 function psg() {
