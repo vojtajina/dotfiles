@@ -15,6 +15,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias o='open'
 alias cl='clear'
+alias st="open -a SourceTree"
 
 # G enable colors
 # h show sizes in kilo, mega, etc.
