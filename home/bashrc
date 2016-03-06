@@ -49,9 +49,12 @@ PROMPT_COMMAND='__git_ps1 "\w" " \$(if [[ \$? == 0 ]]; then echo \"\[\033[01;32m
 
 
 # NVM
-if [ -a "$HOME/.nvm/nvm.sh" ]; then
-  source $HOME/.nvm/nvm.sh
+# Sourcing nvm.sh is very slow, so we source it when needed.
+# Unfortunatelly, this means no node is selected prior calling nvm.
+NVM_DIR=$HOME/.nvm
+if [ -a "$NVM_DIR/nvm.sh" ]; then
   source $NVM_DIR/bash_completion
+  nvm() { . "$NVM_DIR/nvm.sh" ; nvm $@ ; }
 fi
 
 
