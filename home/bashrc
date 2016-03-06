@@ -3,9 +3,11 @@ for file in $HOME/.completion/*; do
   source $file
 done
 
+export EDITOR='sublime'
+export GIT_EDITOR='sublime --wait'
 
 # ALIASES
-alias e='sublime'
+alias e="$EDITOR"
 alias q='exit'
 alias md='mkdir -p'
 alias rd='rmdir'
