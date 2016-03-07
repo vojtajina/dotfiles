@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Open Xcode project in the current folder.
+# @author Vojta Jina <vojta.jina@gmail.com>
+
+
+PROJECT=`find . -iname "*.xcodeproj" -maxdepth 1 2>/dev/null`
+
+if [ -e "$PROJECT" ]; then
+    echo "Opening $PROJECT"
+    open $PROJECT
+else
+    WORKSPACE=`find . -iname "*.xcworkspace" -maxdepth 1 2>/dev/null`
+    if [ -e "$WORKSPACE" ]; then
+        echo "Opening $WORKSPACE"
+        open $WORKSPACE
+    else
+        echo "Can not find Xcode project in $PWD/"
+        exit 1
+    fi
+fi
